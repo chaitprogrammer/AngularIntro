@@ -5,7 +5,7 @@
     <div fxFlex>
         <div>
             <h3>Menu</h3>
-            <hr>
+<!--            <hr>-->
         </div>
     </div>
     
@@ -16,12 +16,21 @@
 
                 
                 <mat-grid-tile-footer>
-                <h1 matLine>{{ dish.name | uppercase }}</h1>
+                <h1 matLine>{{dish.name | uppercase}}</h1>
                 
                 </mat-grid-tile-footer>
             </mat-grid-tile>
         </mat-grid-list>
     </div>
+    
+    <div [hidden]="dishes || errMess">
+    <mat-spinner></mat-spinner>Loading. . . Please wait
+
+    </div>
+      <div *ngIf="errMess">
+        <h2>Error</h2>
+        <h4>{{errMess}}</h4>
+      </div>
 
     
     

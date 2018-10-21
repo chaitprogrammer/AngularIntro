@@ -21,6 +21,8 @@ import { DISHES } from '../shared/dishes';
 export class DishdetailComponent implements OnInit {
 
   dish: Dish;
+  errMess: string;
+
 
   constructor(private dishservice: DishService,
     private route: ActivatedRoute,
@@ -29,7 +31,7 @@ export class DishdetailComponent implements OnInit {
 
   ngOnInit() {
     const id = +this.route.snapshot.params['id'];
-    this.dishservice.getDish(id).subscribe(dish => this.dish = dish);
+    this.dishservice.getDish(id).subscribe(dish => this.dish = dish, errMess=>this.errMess = <any>errMess);
   }
 
   goBack(): void {
